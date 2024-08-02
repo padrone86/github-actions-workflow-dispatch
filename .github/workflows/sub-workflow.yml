@@ -1,11 +1,11 @@
 name: "Sub workflow"
 on:
   workflow_dispatch:
-    # inputs:
-    #   foo:
-    #     description: "foo"
-    #     required: true
-    #     default: "bar"
+    inputs:
+      foo:
+        description: "foo"
+        required: true
+        default: "bar"
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -17,4 +17,4 @@ jobs:
           sleep 10
       - name: Dump paylowd
         run: |
-          echo "Payload: ${{ toJson(github.event.workflow_run) }}"
+          echo "Payload: ${{ inputs.foo }}"

@@ -1,11 +1,5 @@
 name: "Main workflow"
-on:
-  workflow_dispatch:
-    inputs:
-      foo:
-        description: "foo"
-        required: true
-        default: "bar"
+on: workflow_dispatch
 env:
   HOGE: "hoge"
 jobs:
@@ -30,4 +24,7 @@ jobs:
               repo: context.repo.repo,
               workflow_id: 'sub-workflow.yml',
               ref: context.ref,
+              inputs: {
+                foo: 'baz'
+              }
             });
