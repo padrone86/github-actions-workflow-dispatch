@@ -1,14 +1,20 @@
 name: "Sub workflow"
 on:
-  workflow_run:
-    workflows: ["Main workflow"]
-    types:
-      - completed
+  workflow_dispatch:
+    # inputs:
+    #   foo:
+    #     description: "foo"
+    #     required: true
+    #     default: "bar"
 jobs:
   main:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Sleep
+        run: |
+          echo "Sleeping..."
+          sleep 10
       - name: Dump paylowd
         run: |
           echo "Payload: ${{ toJson(github.event.workflow_run) }}"

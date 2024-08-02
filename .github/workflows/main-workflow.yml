@@ -19,3 +19,13 @@ jobs:
       - name: Step B
         run: |
           echo "Step B"
+      - name: Trigger Sub workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'sub-workflow.yml',
+              ref: context.ref,
+            });
