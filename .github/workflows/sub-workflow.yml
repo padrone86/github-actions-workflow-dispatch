@@ -1,0 +1,14 @@
+name: "Sub workflow"
+on:
+  workflow_run:
+    workflows: ["Main workflow"]
+    types:
+      - completed
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: SubStep A
+        run: |
+          echo "SubStep A"
