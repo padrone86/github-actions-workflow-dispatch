@@ -1,4 +1,4 @@
-name: "Main workflow"
+name: "Main workflow (Script)"
 on: workflow_dispatch
 env:
   HOGE: "hoge"
@@ -22,7 +22,7 @@ jobs:
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'sub-workflow.yml',
+              workflow_id: 'sub-workflow-script.yml',
               ref: context.ref,
               inputs: {
                 foo: 'baz'

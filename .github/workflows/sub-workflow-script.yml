@@ -1,4 +1,4 @@
-name: "Sub workflow"
+name: "Sub workflow (Script)"
 on:
   workflow_dispatch:
     inputs:
