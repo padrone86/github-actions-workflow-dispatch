@@ -7,13 +7,6 @@ on:
       - "Main workflow (workflow_run) part3"
     types:
       - completed
-env:
-  WORKFLOW_FROM: |-
-    ${{ fromJson('{
-      "Main workflow (workflow_run) part1": "From Part1",
-      "Main workflow (workflow_run) part2": "From Part2",
-      "Main workflow (workflow_run) part3": "From Part3"
-      }')[github.event.workflow_run.name] }}
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -21,9 +14,24 @@ jobs:
     steps:
       - name: Print info
         run: |
+          case "${{ github.event.workflow_run.name }}" in
+            "Main workflow (workflow_run) part1")
+              WORKFLOW_FROM="From Part1"
+              ;;
+            "Main workflow (workflow_run) part2")
+              WORKFLOW_FROM="From Part2"
+              ;;
+            "Main workflow (workflow_run) part3")
+              WORKFLOW_FROM="From Part3"
+              ;;
+            *)
+              exit 1
+              ;;
+          esac
+
           echo "Head branch: ${{ github.event.workflow_run.head_branch }}"
           echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
           echo "Caller workflow ID: ${{ github.event.workflow_run.workflow_id }}"
           echo "Caller workflow name: ${{ github.event.workflow_run.name }}"
           echo "Caller workflow path: ${{ github.event.workflow_run.path }}"
-          echo "WORKFLOW_FROM: ${{ env.WORKFLOW_FROM }}"
+          echo "WORKFLOW_FROM: ${WORKFLOW_FROM}"
