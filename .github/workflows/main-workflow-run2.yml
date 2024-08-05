@@ -1,4 +1,4 @@
-name: "Main workflow (workflow_run) part1"
+name: "Main workflow (workflow_run) part2"
 on: workflow_dispatch
 env:
   HOGE: "hoge"
@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Debug
         run: |
-          echo "HOGE part1"
+          echo "HOGE part2"
