@@ -1,7 +1,8 @@
 name: "Sub workflow (workflow_run)"
 on:
   workflow_run:
-    workflows: ["Main workflow (workflow_run)"]
+    workflows:
+      - main-workflow-run.yml
     types:
       - completed
 jobs:
