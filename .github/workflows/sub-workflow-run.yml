@@ -17,3 +17,4 @@ jobs:
           echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
           echo "Caller workflow ID: ${{ github.event.workflow_run.workflow_id }}"
           echo "Caller workflow name: ${{ github.event.workflow_run.name }}"
+          echo "Caller workflow path: ${{ github.event.workflow_run.path }}"
