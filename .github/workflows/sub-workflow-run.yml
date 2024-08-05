@@ -9,11 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Sleep
+      - name: Print info
         run: |
-          echo "Sleeping..."
-          sleep 10
-      - name: Dump paylowd
-        run: |
+          echo "Head commit: ${{ github.event.workflow_run.head_commit }}"
+          echo "Head commit ID : ${{ github.event.workflow_run.head_commit.id }}"
           echo "Head branch: ${{ github.event.workflow_run.head_branch }}"
           echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
