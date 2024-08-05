@@ -15,3 +15,5 @@ jobs:
           echo "Head commit ID : ${{ github.event.workflow_run.head_commit.id }}"
           echo "Head branch: ${{ github.event.workflow_run.head_branch }}"
           echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
+          echo "Caller workflow ID: ${{ github.event.workflow_run.workflow_id }}"
+          echo "Caller workflow name: ${{ github.event.workflow_run.name }}"
