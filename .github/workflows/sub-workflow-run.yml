@@ -1,0 +1,19 @@
+name: "Sub workflow (workflow_run)"
+on:
+  workflow_run:
+    workflows: ["Main workflow (workflow_run)"]
+    types:
+      - completed
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Sleep
+        run: |
+          echo "Sleeping..."
+          sleep 10
+      - name: Dump paylowd
+        run: |
+          echo "Head branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
