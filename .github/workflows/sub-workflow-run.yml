@@ -12,26 +12,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Print info
+      - name: Select target S3 bucket
+        id: select-bucket
         run: |
           case "${{ github.event.workflow_run.name }}" in
             "Main workflow (workflow_run) part1")
-              WORKFLOW_FROM="From Part1"
+              echo "bucketname=stg-bucket" >> $GITHUB_OUTPUT
               ;;
             "Main workflow (workflow_run) part2")
-              WORKFLOW_FROM="From Part2"
-              ;;
-            "Main workflow (workflow_run) part3")
-              WORKFLOW_FROM="From Part3"
+              echo "bucketname=stg2-bucket" >> $GITHUB_OUTPUT
               ;;
             *)
               exit 1
               ;;
           esac
 
+      - name: Print info
+        run: |
           echo "Head branch: ${{ github.event.workflow_run.head_branch }}"
           echo "Head SHA: ${{ github.event.workflow_run.head_sha }}"
           echo "Caller workflow ID: ${{ github.event.workflow_run.workflow_id }}"
           echo "Caller workflow name: ${{ github.event.workflow_run.name }}"
           echo "Caller workflow path: ${{ github.event.workflow_run.path }}"
-          echo "WORKFLOW_FROM: ${WORKFLOW_FROM}"
+          echo "Target Bucket: ${{ steps.select-bucket.outputs.bucketname }}"
