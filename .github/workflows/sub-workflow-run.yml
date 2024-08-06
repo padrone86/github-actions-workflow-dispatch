@@ -2,9 +2,9 @@ name: "Sub workflow (workflow_run)"
 on:
   workflow_run:
     workflows:
-      - "\\[part1\\] Main workflow (workflow_run)"
-      - "\\[part2\\] Main workflow (workflow_run)"
-      - "\\[part3\\] Main workflow (workflow_run)"
+      - '[part1] Main workflow (workflow_run)'
+      - '[part2] Main workflow (workflow_run)'
+      - '[part3] Main workflow (workflow_run)'
     types:
       - completed
 jobs:
