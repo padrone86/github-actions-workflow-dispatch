@@ -2,9 +2,9 @@ name: "Sub workflow (workflow_run)"
 on:
   workflow_run:
     workflows:
-      - "Main workflow (workflow_run) part1"
-      - "Main workflow (workflow_run) part2"
-      - "Main workflow (workflow_run) part3"
+      - "[part1] Main workflow (workflow_run)"
+      - "[part2] Main workflow (workflow_run)"
+      - "[part3] Main workflow (workflow_run)"
     types:
       - completed
 jobs:
@@ -16,10 +16,10 @@ jobs:
         id: select-bucket
         run: |
           case "${{ github.event.workflow_run.name }}" in
-            "Main workflow (workflow_run) part1")
+            "[part1] Main workflow (workflow_run)")
               echo "bucketname=stg-bucket" >> $GITHUB_OUTPUT
               ;;
-            "Main workflow (workflow_run) part2")
+            "[part1] Main workflow (workflow_run)")
               echo "bucketname=stg2-bucket" >> $GITHUB_OUTPUT
               ;;
             *)

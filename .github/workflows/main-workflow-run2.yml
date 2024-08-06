@@ -1,4 +1,4 @@
-name: "Main workflow (workflow_run) part2"
+name: "[part2] Main workflow (workflow_run)"
 on: workflow_dispatch
 env:
   HOGE: "hoge"
