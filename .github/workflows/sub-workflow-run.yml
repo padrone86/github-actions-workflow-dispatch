@@ -16,10 +16,10 @@ jobs:
         id: select-bucket
         run: |
           case "${{ github.event.workflow_run.name }}" in
-            "\\[part1\\] Main workflow (workflow_run)")
+            "[part1] Main workflow (workflow_run)")
               echo "bucketname=stg-bucket" >> $GITHUB_OUTPUT
               ;;
-            "\\[part1\\] Main workflow (workflow_run)")
+            "[part2] Main workflow (workflow_run)")
               echo "bucketname=stg2-bucket" >> $GITHUB_OUTPUT
               ;;
             *)
