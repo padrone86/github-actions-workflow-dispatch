@@ -9,6 +9,6 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - name: Print GitHub SHA
+      - name: Print Release tag
         run: |
-          echo "GitHub SHA: ${{ github.sha }}"
+          echo "Release tag: ${{ github.event.release.tag_name }}"
