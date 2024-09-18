@@ -1,0 +1,14 @@
+name: "Release test"
+
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub SHA
+        run: |
+          echo "GitHub SHA: ${{ github.sha }}"
